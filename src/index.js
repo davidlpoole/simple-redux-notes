@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 
 const noteReducer = (state = [], action) => {
-  if (action.type === 'NEW_NOTE') {
-    return state.concat(action.data)
+  switch (action.type) {
+    case 'NEW_NOTES':
+      return state.concat(action.data)
+    default:
+      return state
   }
-
-  return state
 }
 
 const store = createStore(noteReducer)
